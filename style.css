@@ -1,0 +1,170 @@
+/* Importação da fonte Google */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Estilos base e reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --card-bg: white;
+    --border-color: #4ade80;
+    --button-bg: white;
+    --button-shadow: rgba(0, 0, 0, 0.1);
+    --author-color: #6c757d;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e1e1e1;
+    --card-bg: #2c2c2c;
+    --border-color: #4ade80;
+    --button-bg: #2c2c2c;
+    --button-shadow: rgba(0, 0, 0, 0.2);
+    --author-color: #a0a0a0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-bg);
+    box-shadow: 0 2px 10px var(--button-shadow);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    background-color: var(--border-color);
+    color: white;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.author {
+    color: var(--author-color);
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.github-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+}
+
+.github-icon:hover {
+    transform: scale(1.1);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.timer-circle {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    box-shadow: 0 10px 30px var(--button-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    border: 8px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    box-shadow: 0 2px 10px var(--button-shadow);
+}
+
+button:hover {
+    background-color: var(--border-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Ajustes para responsividade */
+@media (max-width: 480px) {
+    .timer-circle {
+        width: 220px;
+        height: 220px;
+        font-size: 2.8rem;
+    }
+
+    button {
+        padding: 0.7rem 1.2rem;
+    }
+    
+    .theme-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+}
