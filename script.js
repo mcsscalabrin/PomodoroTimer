@@ -1,9 +1,11 @@
 let timer;
 let minutos = 15;
-let isPaused = false;
+let segundos = 0; // Initialize the segundos variable
+let isPaused = true; // Start with the timer paused
 let enteredTime = null;
 
 function startTimer() {
+    updateTimer(); // Immediate update before starting the interval
     timer = setInterval(updateTimer, 1000);
 }
 
@@ -24,13 +26,13 @@ function updateTimer() {
     }
 }
 
-function formatTime() {
-    return `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+function formatTime(min, sec) {
+    return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
 }
 
 function togglePauseResume() {
     const pauseResumeButton = document.querySelector('.control-buttons button');
-    isPaused = !isPaused
+    isPaused = !isPaused;
     if (isPaused) {
         clearInterval(timer);
         pauseResumeButton.textContent = "RESUME";
@@ -44,30 +46,28 @@ function restartTimer() {
     clearInterval(timer);
     minutos = enteredTime || 15;
     segundos = 0;
-    isPaused = false;
+    isPaused = true; // Ensure the timer is paused initially
     const timerElement = document.getElementById('timer');
     timerElement.textContent = formatTime(minutos, segundos);
-    const pauseResumeButton = document.getElementById('.control-buttons button');
-    pauseResumeButton.textContent = "PAUSE";
-    startTimer();
+    const pauseResumeButton = document.querySelector('.control-buttons button');
+    pauseResumeButton.textContent = "RESUME"; // Set the button text to RESUME
 }
 
 function chooseTime() {
     const newTime = prompt("Insira o tempo em minutos:");
-    if (!NaN(newTime) && newTime > 0) {
+    if (!isNaN(newTime) && newTime > 0) {
         enteredTime = parseInt(newTime);
         minutos = enteredTime;
         segundos = 0;
-        isPaused = false;
+        isPaused = true; // Ensure the timer is paused initially
         const timerElement = document.getElementById('timer');
         timerElement.textContent = formatTime(minutos, segundos);
         clearInterval(timer);
-        const pauseResumeButton = document.getElementById('.control-buttons button');
-        pauseResumeButton.textContent = "PAUSE";
-        startTimer();
+        const pauseResumeButton = document.querySelector('.control-buttons button');
+        pauseResumeButton.textContent = "RESUME"; // Set the button text to RESUME
     } else {
-        alert("Inut inválido, entre com um número válido e maior que 0.")
+        alert("Input inválido, entre com um número válido e maior que 0.")
     }
 }
 
-startTimer();
+// Remove the call to startTimer() at the bottom
